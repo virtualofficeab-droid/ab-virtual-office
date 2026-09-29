@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB Virtual Office | Wsparcie administracyjne</title>
+<meta name="description" content="AB Virtual Office – wsparcie administracyjne dla małych firm i JDG. Faktury, KSeF, dokumenty, kontrola kosztów i analiza danych. online na terenie całej Polski.">
+<style>
+:root{
+  --navy:#173b55;
+  --teal:#247f83;
+  --teal2:#2e9695;
+  --gold:#c9a85b;
+  --cream:#f8f6ef;
+  --light:#eef5f4;
+  --text:#24343d;
+  --muted:#68777e;
+  --white:#fff;
+  --shadow:0 12px 35px rgba(23,59,85,.10);
+  --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+nav{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e8eeee}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy)}
+.logo{width:46px;height:46px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;background:linear-gradient(145deg,#fff,#eef5f4);color:var(--navy);font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.brand small{display:block;color:var(--teal);font-weight:600;font-size:11px;letter-spacing:.5px}
+.navlinks{display:flex;gap:24px;font-size:14px;font-weight:700;color:var(--navy)}
+.navlinks a:hover{color:var(--teal)}
+.hero{background:linear-gradient(135deg,#f8f6ef 0%,#eef5f4 52%,#fff 100%);padding:78px 0 72px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:340px;height:340px;border-radius:50%;right:-120px;top:-120px;background:rgba(201,168,91,.12)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:55px;align-items:center;position:relative;z-index:1}
+.kicker{display:inline-block;color:var(--teal);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;font-size:13px;margin-bottom:12px}
+h1{font-size:clamp(38px,5vw,62px);line-height:1.05;margin:0 0 22px;color:var(--navy)}
+.hero p{font-size:20px;color:#53656e;max-width:650px;margin:0 0 30px}
+.btn{display:inline-block;padding:14px 24px;border-radius:999px;font-weight:800;margin-right:8px;margin-bottom:8px}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 8px 20px rgba(36,127,131,.22)}
+.btn-secondary{border:1px solid #bdd1d0;color:var(--navy);background:#fff}
+.hero-card{background:#fff;border-radius:30px;padding:28px;box-shadow:var(--shadow);border:1px solid #e8eeee}
+.hero-card .circle{width:190px;height:190px;margin:0 auto 20px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;text-align:center;background:radial-gradient(circle,#fff 45%,#eef5f4);color:var(--navy);font-weight:900;font-size:26px;line-height:1.05}
+.hero-card p{font-size:15px;text-align:center;margin:0;color:var(--muted)}
+section{padding:82px 0}
+.section-head{max-width:720px;margin-bottom:38px}
+.section-head h2{font-size:38px;line-height:1.15;color:var(--navy);margin:0 0 12px}
+.section-head p{margin:0;color:var(--muted);font-size:17px}
+.services{background:#fff}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service{padding:27px;background:var(--light);border-radius:var(--radius);border:1px solid #dfeceb}
+.service .icon{font-size:30px;margin-bottom:10px}
+.service h3{margin:0 0 8px;color:var(--navy);font-size:20px}
+.service p{margin:0;color:#607078;font-size:15px}
+.audience{background:var(--cream)}
+.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.audience-box{background:#fff;border-radius:var(--radius);padding:30px;box-shadow:0 8px 25px rgba(23,59,85,.06)}
+.audience-box h3{color:var(--navy);margin-top:0}
+.audience-box ul{padding-left:20px;margin-bottom:0}
+.audience-box li{margin:8px 0}
+.highlight{background:var(--navy);color:#fff;border-radius:30px;padding:42px}
+.highlight h2{margin-top:0;font-size:34px}
+.highlight p{color:#dce8eb;max-width:780px}
+.packages{background:#f8faf9}
+.package-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.package{background:#fff;border:1px solid #dfe8e7;border-radius:26px;padding:30px;position:relative;box-shadow:0 8px 24px rgba(23,59,85,.05)}
+.package.featured{border:2px solid var(--teal);transform:translateY(-7px)}
+.badge{position:absolute;top:-13px;left:25px;background:var(--teal);color:#fff;border-radius:999px;padding:5px 13px;font-size:12px;font-weight:800}
+.package h3{margin:0;color:var(--navy);font-size:23px}
+.price{font-size:34px;font-weight:900;color:var(--teal);margin:8px 0 18px}
+.price span{font-size:13px;color:var(--muted);font-weight:600}
+.package ul{padding-left:20px;color:#596a72}
+.package li{margin:8px 0}
+.note{margin-top:28px;color:var(--muted);font-size:14px;background:#fff;padding:18px;border-left:4px solid var(--gold);border-radius:10px}
+.additional{background:#fff}
+.add-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.add{border:1px solid #e2eaea;border-radius:18px;padding:22px}
+.add strong{color:var(--navy)}
+.data{background:linear-gradient(135deg,#eef5f4,#f8f6ef)}
+.data-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:35px;align-items:center}
+.data-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.data-item{background:#fff;border-radius:16px;padding:18px;border:1px solid #dfeceb}
+.data-item strong{display:block;color:var(--navy);margin-bottom:4px}
+.boundary{background:#fff}
+.boundary-card{background:#f8f6ef;border-radius:28px;padding:38px;border:1px solid #eee7d6}
+.boundary-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.boundary h3{color:var(--navy);margin-top:0}
+.yes li::marker{color:var(--teal)}
+.no li::marker{color:#b56b58}
+.contact{background:var(--navy);color:#fff}
+.contact-grid{display:grid;grid-template-columns:1fr .8fr;gap:40px;align-items:center}
+.contact h2{font-size:40px;line-height:1.15;margin:0 0 12px}
+.contact p{color:#dce8eb}
+.contact-card{background:#fff;color:var(--text);border-radius:25px;padding:28px}
+.contact-card strong{color:var(--navy)}
+footer{background:#102d40;color:#bcd0d7;padding:24px 0;font-size:13px}
+footer .container{display:flex;justify-content:space-between;gap:20px}
+@media(max-width:850px){
+ .navlinks{display:none}
+ .hero-grid,.data-grid,.contact-grid,.audience-grid,.boundary-grid{grid-template-columns:1fr}
+ .service-grid,.package-grid,.add-grid{grid-template-columns:1fr}
+ .package.featured{transform:none}
+ .hero{padding-top:55px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="container nav-inner">
+  <a class="brand" href="#top">
+   <span class="logo">AB</span>
+   <span>AB Virtual Office<small>Wsparcie administracyjne</small></span>
+  </a>
+  <div class="navlinks">
+   <a href="#uslugi">Usługi</a>
+   <a href="#pakiety">Pakiety</a>
+   <a href="#analiza">Analiza danych</a>
+   <a href="#kontakt">Kontakt</a>
+  </div>
+ </div>
+</nav>
+
+<main id="top">
+<section class="hero">
+ <div class="container hero-grid">
+  <div>
+   <span class="kicker">ONLINE • CAŁA POLSKA</span>
+   <h1>Wsparcie administracyjne dla małych firm i JDG</h1>
+   <p>Pomagam uporządkować dokumenty, faktury, koszty i dane, aby właściciel firmy mógł skupić się na swojej pracy.</p>
+   <a class="btn btn-primary" href="#kontakt">Zapytaj o współpracę</a>
+   <a class="btn btn-secondary" href="#uslugi">Zobacz usługi</a>
+  </div>
+  <div class="hero-card">
+   <div class="circle">AB<br><span style="font-size:17px;color:#247f83">Virtual Office</span></div>
+   <p><strong>Profesjonalne wsparcie bez zatrudniania pracownika na pełny etat.</strong></p>
+  </div>
+ </div>
+</section>
+
+<section id="uslugi" class="services">
+ <div class="container">
+  <div class="section-head">
+   <span class="kicker">Usługi</span>
+   <h2>Konkretną pracę przekazujesz mnie. Ty otrzymujesz uporządkowany rezultat.</h2>
+   <p>Zakres współpracy ustalamy indywidualnie. Pakiety mają jasno określony zakres, a dodatkowe zadania wymagają wcześniejszej akceptacji.</p>
+  </div>
+  <div class="service-grid">
+   <article class="service"><div class="icon">🧾</div><h3>Faktury i KSeF</h3><p>Wystawianie i porządkowanie faktur oraz przygotowanie dokumentów do dalszej obsługi księgowej.</p></article>
+   <article class="service"><div class="icon">📁</div><h3>Dokumenty i administracja</h3><p>Porządkowanie dokumentów, zestawienia, pisma i bieżące zadania administracyjne w ustalonym zakresie.</p></article>
+   <article class="service"><div class="icon">💰</div><h3>Kontrola kosztów i płatności</h3><p>Zestawienia kosztów, kontrola terminów płatności i przygotowanie informacji dla właściciela.</p></article>
+   <article class="service"><div class="icon">📊</div><h3>Analiza danych</h3><p>Analiza sprzedaży, kosztów i wyników oraz przygotowanie czytelnych raportów.</p></article>
+   <article class="service"><div class="icon">📈</div><h3>Excel i raporty</h3><p>Przejrzyste arkusze, zestawienia i raporty pomagające szybciej zrozumieć dane firmy.</p></article>
+   <article class="service"><div class="icon">✉️</div><h3>Korespondencja i pisma</h3><p>Przygotowanie prostych pism, wiadomości i dokumentów administracyjnych.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="audience">
+ <div class="container">
+  <div class="section-head">
+   <span class="kicker">Dla kogo?</span>
+   <h2>Dla firm, które nie potrzebują pracownika na pełny etat.</h2>
+  </div>
+  <div class="audience-grid">
+   <div class="audience-box">
+    <h3>Najlepiej sprawdzę się przy:</h3>
+    <ul>
+     <li>małych firmach i JDG,</li>
+     <li>usługach i handlu,</li>
+     <li>firmach, które mają księgowość, ale potrzebują wsparcia administracyjnego,</li>
+     <li>gastronomii – przy kontroli kosztów i danych.</li>
+    </ul>
+   </div>
+   <div class="audience-box">
+    <h3>Jak wygląda współpraca?</h3>
+    <ul>
+     <li>online – z dowolnego miejsca,</li>
+     <li>ustalamy zakres zadań,</li>
+     <li>wybierasz pakiet albo konkretną usługę,</li>
+     <li>otrzymujesz wykonany zakres – nie „pracownika na telefon”.</li>
+    </ul>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="container">
+  <div class="highlight">
+   <span class="kicker" style="color:#9fd5d2">Dlaczego AB Virtual Office?</span>
+   <h2>Nie musisz zatrudniać kolejnej osoby, żeby mieć porządek w dokumentach i danych.</h2>
+   <p>Zewnętrzne wsparcie administracyjne pozwala przekazać konkretne zadania bez tworzenia dodatkowego etatu. Zakres współpracy jest ustalany z góry.</p>
+  </div>
+ </div>
+</section>
+
+<section id="pakiety" class="packages">
+ <div class="container">
+  <div class="section-head">
+   <span class="kicker">Pakiety</span>
+   <h2>Jasny zakres. Bez rozliczania każdej minuty.</h2>
+   <p>Podane ceny są wersją roboczą do wspólnego dopracowania. Pakiet nie oznacza nieograniczonej obsługi firmy.</p>
+  </div>
+  <div class="package-grid">
+   <article class="package">
+    <h3>START</h3>
+    <div class="price">590 zł <span>netto / miesiąc</span></div>
+    <ul>
+     <li>obsługa podstawowych dokumentów,</li>
+     <li>faktury i podstawowe zestawienia,</li>
+     <li>kontrola płatności w ustalonym zakresie,</li>
+     <li>przygotowanie danych dla księgowości.</li>
+    </ul>
+   </article>
+   <article class="package featured">
+    <span class="badge">NAJCZĘŚCIEJ WYBIERANY</span>
+    <h3>STANDARD</h3>
+    <div class="price">990 zł <span>netto / miesiąc</span></div>
+    <ul>
+     <li>zakres START,</li>
+     <li>bieżące zestawienia kosztów i sprzedaży,</li>
+     <li>kontrola płatności,</li>
+     <li>podstawowa analiza danych,</li>
+     <li>miesięczny raport dla właściciela.</li>
+    </ul>
+   </article>
+   <article class="package">
+    <h3>BUSINESS</h3>
+    <div class="price">1490 zł <span>netto / miesiąc</span></div>
+    <ul>
+     <li>rozszerzone wsparcie administracyjne,</li>
+     <li>faktury i KSeF w ustalonym limicie,</li>
+     <li>kontrola kosztów i płatności,</li>
+     <li>analiza danych i raport miesięczny,</li>
+     <li>zestawienia Excel.</li>
+    </ul>
+   </article>
+  </div>
+  <div class="note"><strong>Ważne:</strong> Pakiety obejmują określony zakres zadań. Nie obejmują pełnej obsługi administracyjnej firmy ani dyspozycyjności w godzinach pracy klienta. Zadania poza zakresem są wyceniane indywidualnie i wymagają wcześniejszej akceptacji.</div>
+ </div>
+</section>
+
+<section class="additional">
+ <div class="container">
+  <div class="section-head">
+   <span class="kicker">Usługi dodatkowe</span>
+   <h2>Potrzebujesz tylko konkretnej usługi?</h2>
+   <p>Nie musisz kupować miesięcznego pakietu.</p>
+  </div>
+  <div class="add-grid">
+   <div class="add"><strong>Analiza danych i kosztów</strong><br>od 300 zł netto</div>
+   <div class="add"><strong>Raport dla właściciela</strong><br>od 300 zł netto</div>
+   <div class="add"><strong>Zestawienie kosztów</strong><br>od 250 zł netto</div>
+   <div class="add"><strong>Uporządkowanie dokumentów</strong><br>od 300 zł netto</div>
+   <div class="add"><strong>Analiza rentowności</strong><br>od 500 zł netto</div>
+   <div class="add"><strong>Analiza kosztów gastronomii</strong><br>od 500 zł netto</div>
+  </div>
+ </div>
+</section>
+
+<section id="analiza" class="data">
+ <div class="container data-grid">
+  <div>
+   <span class="kicker">Analiza danych</span>
+   <h2 style="font-size:38px;color:#173b55">Dane mają pomagać właścicielowi zarabiać, a nie tylko leżeć w Excelu.</h2>
+   <p style="color:#607078;font-size:17px">Przygotowuję czytelne zestawienia, porównania i raporty, które pokazują, co zmieniło się w firmie i gdzie warto zwrócić uwagę.</p>
+  </div>
+  <div class="data-list">
+   <div class="data-item"><strong>📊 Koszty</strong>porównanie i struktura wydatków</div>
+   <div class="data-item"><strong>📈 Sprzedaż</strong>zestawienia i zmiany w czasie</div>
+   <div class="data-item"><strong>💡 Rentowność</strong>analiza produktu lub usługi</div>
+   <div class="data-item"><strong>🍽️ Gastronomia</strong>produkty, porcje, odpady i koszt</div>
+  </div>
+ </div>
+</section>
+
+<section class="boundary">
+ <div class="container">
+  <div class="boundary-card">
+   <div class="section-head">
+    <span class="kicker">Jasne zasady współpracy</span>
+    <h2>Twoja firma pozostaje Twoja.</h2>
+    <p>AB Virtual Office wykonuje uzgodnione zadania administracyjne. Nie zastępuje właściciela firmy ani biura rachunkowego.</p>
+   </div>
+   <div class="boundary-grid">
+    <div><h3>W ramach współpracy</h3><ul class="yes"><li>ustalony zakres zadań</li><li>konkretne rezultaty</li><li>pakiety lub pojedyncze usługi</li><li>indywidualna wycena większych projektów</li></ul></div>
+    <div><h3>Poza pakietem</h3><ul class="no"><li>nieograniczona dostępność</li><li>„wszystko, co akurat trzeba zrobić”</li><li>zadania poza ustalonym zakresem bez akceptacji ceny</li><li>pełnienie funkcji pracownika administracyjnego na cały etat</li></ul></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="kontakt" class="contact">
+ <div class="container contact-grid">
+  <div>
+   <span class="kicker" style="color:#9fd5d2">Kontakt</span>
+   <h2>Porozmawiajmy o tym, co możesz przekazać zewnętrznej osobie.</h2>
+   <p>Napisz, czym zajmuje się Twoja firma i czego potrzebujesz. Na tej podstawie można ustalić zakres współpracy i przygotować indywidualną ofertę.</p>
+  </div>
+  <div class="contact-card">
+   <p><strong>AB Virtual Office</strong></p>
+   <p>online • cała Polska</p>
+   <p>📧 <a href="mailto:virtualofficeab@gmail.com">virtualofficeab@gmail.com</a></p>
+   <a class="btn btn-primary" href="mailto:virtualofficeab@gmail.com?subject=Zapytanie%20o%20współpracę">Napisz wiadomość</a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <span>© 2026 AB Virtual Office</span>
+  <span>Wsparcie administracyjne • online • cała Polska</span>
+ </div>
+</footer>
+</body>
+</html>
